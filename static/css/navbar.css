@@ -35,6 +35,26 @@
   width: 100%;
 }
 
+#nav-wrapper #searchDiv #search:focus {
+  outline: none;
+}
+
+#nav-wrapper #searchDiv #search:focus::-webkit-input-placeholder {
+  color: #f0f0f0;
+}
+
+#nav-wrapper #searchDiv #search:focus:-ms-input-placeholder {
+  color: #f0f0f0;
+}
+
+#nav-wrapper #searchDiv #search:focus::-ms-input-placeholder {
+  color: #f0f0f0;
+}
+
+#nav-wrapper #searchDiv #search:focus::placeholder {
+  color: #f0f0f0;
+}
+
 #nav-wrapper #nav {
   height: 100%;
 }
