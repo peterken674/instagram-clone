@@ -9,7 +9,11 @@ body, *{
     box-sizing: border-box;
     font-family: Roboto, san-serif;
     transition: all 150ms;
-    // outline: 1px solid red;
+}
+
+body{
+    background-color: #FAFAFA;
+    width: 100%;
 }
 
 a{
@@ -21,8 +25,11 @@ li{
 
 // Navbar
 
-#nav-wrapper {
+#navWrapper {
+    background-color: #FFFFFF;
     max-width: 100%;
+    z-index: 1000;
+    position: fixed;
 
     &>div {
         margin-left: auto;
@@ -61,9 +68,9 @@ li{
 
             &:focus {
                 outline: none;
-
+                text-align: left;
                 &::placeholder {
-                    color: #f0f0f0;
+                    text-align: left;
                 }
             }
         }
@@ -103,6 +110,150 @@ li{
                     }
                 }
 
+            }
+        }
+    }
+}
+
+// Index
+#contentWrapper {
+    margin-top: 2rem;
+    background-color: transparent;
+    max-width: 100%;
+
+    &>div {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: 1024px) {
+        &>div {
+            width: 50%;
+        }
+    }
+
+    #main {
+        .status{
+            overflow-x: auto;
+            .status-item{
+                width: fit-content;
+                text-align: center;
+                .status-div {
+                    height: 55px;
+                    width: 55px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    box-shadow: 0 0 0 2px white,
+                        0 0 0 4px orange;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+        a {
+            color: #202020;
+            p {
+                font-family: 'Grand Hotel', cursive;
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+.post{
+    .post-header{
+        display: flex;
+        justify-content: space-between;
+        .post-header-left{
+            display: flex;
+            align-items: center;
+            
+            .post-header-profilepic{
+                height: 35px;
+                width: 35px;
+                border-radius: 50%;
+                box-shadow: 0 0 0 2px white, 0 0 0 4px orange;
+                overflow: hidden;
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .post-header-username{
+                small{
+                    line-height: 1;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .post-content{
+        width: 100%;
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .post-footer{
+        .post-footer-icons{
+            a{
+                i{
+                    font-size: 2rem;
+                    color: grey;
+                    font-weight: lighter;
+                }
+            }
+        }
+        .post-footer-details{
+            p{
+                line-height: 1;
+                font-size: 14px;
+            }
+            p.time{
+                font-size: 12px;
+            }
+        }
+    }
+
+    .comment-input{
+        .emoji{
+            font-size: 2rem;
+            margin-right: .5rem;
+            color: grey;
+        }
+        .comment{
+            flex-grow: 1;
+            form{
+                display: flex;
+                input{
+                    border: none;
+                    flex-grow: 1;
+                    &::placeholder{
+                        opacity: 0.5;
+                    }
+                    &:focus{
+                        outline: none;
+                        border: none;
+                    }
+                }
+                button{
+                    justify-self: flex-end;
+                    border: none;
+                    background-color: transparent;
+                    color: rgb(72, 173, 255);
+                    font-weight: bold;
+                    opacity: 0.6;
+                    &:hover{
+                        opacity: 1;
+                    }
+                }
             }
         }
     }

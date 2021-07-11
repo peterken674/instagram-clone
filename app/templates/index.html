@@ -3,11 +3,191 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
 {% block content %}
-<div class="container-lg">
-    <div id="contentWrapper">
+<div class="container-fluid-lg">
+    <div class="container-lg" id="contentWrapper">
         <div class="row">
-            <div class="col-md-8">
-                <h1>Content</h1>
+            <div class="d-flex align-items-center justify-content-evenly">
+                <div id="main" class="col-md-8">
+                    <div class="card mt-4 py-3">
+                        <div class="status d-flex">
+                            <div class="status-item mx-2 ms-4">
+                                <div class="status-div">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaaf5NeDIc6ZkgqEgnQB2btCN1QEBqwKDiw&usqp=CAU"
+                                            alt="">
+                                    </a>
+                                </div>
+                                <div class="username mt-1">
+                                    <small>nickiminaj</small>
+                                </div>
+                            </div>
+
+                            <div class="status-item mx-2">
+                                <div class="status-div">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaaf5NeDIc6ZkgqEgnQB2btCN1QEBqwKDiw&usqp=CAU"
+                                            alt="">
+                                    </a>
+                                </div>
+                                <div class="username mt-1">
+                                    <small>nickiminaj</small>
+                                </div>
+                            </div>
+
+                            <div class="status-item mx-2">
+                                <div class="status-div">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaaf5NeDIc6ZkgqEgnQB2btCN1QEBqwKDiw&usqp=CAU"
+                                            alt="">
+                                    </a>
+                                </div>
+                                <div class="username mt-1">
+                                    <small>nickiminaj</small>
+                                </div>
+                            </div>
+
+                            <div class="status-item mx-2">
+                                <div class="status-div">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaaf5NeDIc6ZkgqEgnQB2btCN1QEBqwKDiw&usqp=CAU"
+                                            alt="">
+                                    </a>
+                                </div>
+                                <div class="username mt-1">
+                                    <small>nickiminaj</small>
+                                </div>
+                            </div>
+
+                            <div class="status-item mx-2">
+                                <div class="status-div">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCaaf5NeDIc6ZkgqEgnQB2btCN1QEBqwKDiw&usqp=CAU"
+                                            alt="">
+                                    </a>
+                                </div>
+                                <div class="username mt-1">
+                                    <small>nickiminaj</small>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- END OF STATUS -->
+
+                    <!-- FEED -->
+                    <div class="card mt-4 post">
+                        <div class="post-header px-4 py-3">
+                            <div class="post-header-left">
+                                <div class="post-header-profilepic">
+                                    <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200" alt="" class="img-fluid">
+                                </div>
+                                <div class="post-header-username mx-2">
+                                    <small><strong>nickiminaj</strong></small>
+                                </div>
+                            </div>
+                            <div class="post-header-right">
+                                <h5><a href="#">...</a></h5>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <img src="https://assets.teenvogue.com/photos/5ff1d12858127b1a10f9177e/16:9/w_2560%2Cc_limit/GettyImages-839984712.jpg"
+                                alt="">
+                        </div>
+
+                        <div class="post-footer">
+                            <div class="post-footer-icons d-flex justify-content-between p-2">
+                                <div class="post-footer-icons-left">
+                                    <a href="#"><i class='bx bx-heart px-2 ms-0'></i></a>
+                                    <a href="#"><i class='bx bx-message-rounded px-2'></i></a>
+                                    <a href="#"><i class='bx bx-paper-plane px-2'></i></a>
+                                </div>
+                                <div class="post-footer-icons-right">
+                                    <a href="#"><i class='bx bx-bookmark px-2'></i></a>
+                                </div>
+                            </div>
+                            <div class="post-footer-details px-2 my-0">
+                                <p><strong>1,994,195 likes</strong></p>
+                                <p><strong>nickiminaj</strong> And you can’t be round no #HoeShit ...<span class="text-muted">more</span>
+                                </p>
+                                <p><a class="text-muted" href="#">View all 17,493 comments</a></p>
+                                <p><strong>ankushrz</strong> Eeeey! </p>
+                                <p><strong>prince_kaya</strong> Barbie 4 life. </p>
+                                <p class="text-muted time">1 DAY AGO</p>
+                            </div>
+                        </div>
+                       
+                        <div class="comment-input d-md-flex align-items-center justify-content-between mx-2 d-none">
+                             <hr>
+                            <div class="emoji"><i class='bx bx-smile'></i></div>
+                            <div class="comment">
+                                <form action="#">
+                                    <input type="text" name="comment" id="comment" placeholder="Add a comment...">
+                                    <button>Post</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4 post">
+                        <div class="post-header px-4 py-3">
+                            <div class="post-header-left">
+                                <div class="post-header-profilepic">
+                                    <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200" alt="" class="img-fluid">
+                                </div>
+                                <div class="post-header-username mx-2">
+                                    <small><strong>nickiminaj</strong></small>
+                                </div>
+                            </div>
+                            <div class="post-header-right">
+                                <h5><a href="#">...</a></h5>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <img src="https://api.time.com/wp-content/uploads/2015/07/nicki-minaj.jpeg?w=824&quality=70"
+                                alt="">
+                        </div>
+
+                        <div class="post-footer">
+                            <div class="post-footer-icons d-flex justify-content-between p-2">
+                                <div class="post-footer-icons-left">
+                                    <a href="#"><i class='bx bx-heart px-2 ms-0'></i></a>
+                                    <a href="#"><i class='bx bx-message-rounded px-2'></i></a>
+                                    <a href="#"><i class='bx bx-paper-plane px-2'></i></a>
+                                </div>
+                                <div class="post-footer-icons-right">
+                                    <a href="#"><i class='bx bx-bookmark px-2'></i></a>
+                                </div>
+                            </div>
+                            <div class="post-footer-details px-2 my-0">
+                                <p><strong>1,994,195 likes</strong></p>
+                                <p><strong>nickiminaj</strong> And you can’t be round no #HoeShit ...<span class="text-muted">more</span>
+                                </p>
+                                <p><a class="text-muted" href="#">View all 17,493 comments</a></p>
+                                <p><strong>ankushrz</strong> Eeeey! </p>
+                                <p><strong>prince_kaya</strong> Barbie 4 life. </p>
+                                <p class="text-muted time">1 DAY AGO</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="comment-input d-flex align-items-center justify-content-between mx-2">
+                            <div class="emoji"><i class='bx bx-smile'></i></div>
+                            <div class="comment">
+                                <form action="#">
+                                    <input type="text" name="comment" id="comment" placeholder="Add a comment...">
+                                    <button>Post</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="subContent" class="col-md-4 d-none d-md-flex">
+                    
+                </div>
             </div>
         </div>
     </div>

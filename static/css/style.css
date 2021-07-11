@@ -13,6 +13,11 @@ body, * {
   transition: all 150ms;
 }
 
+body {
+  background-color: #FAFAFA;
+  width: 100%;
+}
+
 a {
   text-decoration: none;
 }
@@ -21,31 +26,34 @@ li {
   list-style: none;
 }
 
-#nav-wrapper {
+#navWrapper {
+  background-color: #FFFFFF;
   max-width: 100%;
+  z-index: 1000;
+  position: fixed;
 }
 
-#nav-wrapper > div {
+#navWrapper > div {
   margin-left: auto;
   margin-right: auto;
 }
 
 @media screen and (min-width: 1366px) {
-  #nav-wrapper > div {
+  #navWrapper > div {
     width: 50%;
   }
 }
 
-#nav-wrapper #logo a {
+#navWrapper #logo a {
   color: #202020;
 }
 
-#nav-wrapper #logo a p {
+#navWrapper #logo a p {
   font-family: 'Grand Hotel', cursive;
   font-size: 2rem;
 }
 
-#nav-wrapper #searchDiv #search {
+#navWrapper #searchDiv #search {
   font-family: Roboto, 'FontAwesome';
   font-weight: lighter;
   font-size: 0.95rem;
@@ -57,31 +65,32 @@ li {
   width: 100%;
 }
 
-#nav-wrapper #searchDiv #search:focus {
+#navWrapper #searchDiv #search:focus {
   outline: none;
+  text-align: left;
 }
 
-#nav-wrapper #searchDiv #search:focus::-webkit-input-placeholder {
-  color: #f0f0f0;
+#navWrapper #searchDiv #search:focus::-webkit-input-placeholder {
+  text-align: left;
 }
 
-#nav-wrapper #searchDiv #search:focus:-ms-input-placeholder {
-  color: #f0f0f0;
+#navWrapper #searchDiv #search:focus:-ms-input-placeholder {
+  text-align: left;
 }
 
-#nav-wrapper #searchDiv #search:focus::-ms-input-placeholder {
-  color: #f0f0f0;
+#navWrapper #searchDiv #search:focus::-ms-input-placeholder {
+  text-align: left;
 }
 
-#nav-wrapper #searchDiv #search:focus::placeholder {
-  color: #f0f0f0;
+#navWrapper #searchDiv #search:focus::placeholder {
+  text-align: left;
 }
 
-#nav-wrapper #nav {
+#navWrapper #nav {
   height: 100%;
 }
 
-#nav-wrapper #nav ul {
+#navWrapper #nav ul {
   width: 100%;
   height: inherit;
   margin-right: 0;
@@ -89,13 +98,13 @@ li {
   margin-bottom: 0;
 }
 
-#nav-wrapper #nav ul li a {
+#navWrapper #nav ul li a {
   color: lightgrey;
   margin: 0;
   height: 100%;
 }
 
-#nav-wrapper #nav ul li a i {
+#navWrapper #nav ul li a i {
   font-size: 1.6rem;
   font-weight: light;
   height: 100%;
@@ -107,12 +116,188 @@ li {
           align-items: center;
 }
 
-#nav-wrapper #nav ul li a i::after {
+#navWrapper #nav ul li a i::after {
   content: "";
   display: none;
 }
 
-#nav-wrapper #nav ul li a:hover {
+#navWrapper #nav ul li a:hover {
   color: grey;
+}
+
+#contentWrapper {
+  margin-top: 2rem;
+  background-color: transparent;
+  max-width: 100%;
+}
+
+#contentWrapper > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 1024px) {
+  #contentWrapper > div {
+    width: 50%;
+  }
+}
+
+#contentWrapper #main .status {
+  overflow-x: auto;
+}
+
+#contentWrapper #main .status .status-item {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+}
+
+#contentWrapper #main .status .status-item .status-div {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 0 2px white, 0 0 0 4px orange;
+          box-shadow: 0 0 0 2px white, 0 0 0 4px orange;
+}
+
+#contentWrapper #main .status .status-item .status-div img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#contentWrapper #main a {
+  color: #202020;
+}
+
+#contentWrapper #main a p {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 2rem;
+}
+
+.post .post-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.post .post-header .post-header-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post .post-header .post-header-left .post-header-profilepic {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 0 2px white, 0 0 0 4px orange;
+          box-shadow: 0 0 0 2px white, 0 0 0 4px orange;
+  overflow: hidden;
+}
+
+.post .post-header .post-header-left .post-header-profilepic img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.post .post-header .post-header-left .post-header-username small {
+  line-height: 1;
+  margin: 0;
+}
+
+.post .post-content {
+  width: 100%;
+}
+
+.post .post-content img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.post .post-footer .post-footer-icons a i {
+  font-size: 2rem;
+  color: grey;
+  font-weight: lighter;
+}
+
+.post .post-footer .post-footer-details p {
+  line-height: 1;
+  font-size: 14px;
+}
+
+.post .post-footer .post-footer-details p.time {
+  font-size: 12px;
+}
+
+.post .comment-input .emoji {
+  font-size: 2rem;
+  margin-right: .5rem;
+  color: grey;
+}
+
+.post .comment-input .comment {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.post .comment-input .comment form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.post .comment-input .comment form input {
+  border: none;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.post .comment-input .comment form input::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+.post .comment-input .comment form input:-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.post .comment-input .comment form input::-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.post .comment-input .comment form input::placeholder {
+  opacity: 0.5;
+}
+
+.post .comment-input .comment form input:focus {
+  outline: none;
+  border: none;
+}
+
+.post .comment-input .comment form button {
+  justify-self: flex-end;
+  border: none;
+  background-color: transparent;
+  color: #48adff;
+  font-weight: bold;
+  opacity: 0.6;
+}
+
+.post .comment-input .comment form button:hover {
+  opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
