@@ -1,0 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=Grand+Hotel:regular);
+#nav-wrapper #logo a {
+  color: #202020;
+}
+
+#nav-wrapper #logo a p {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 2rem;
+}
+
+#nav-wrapper #searchDiv #search {
+  font-family: Roboto, 'FontAwesome';
+  font-weight: lighter;
+  font-size: 0.95rem;
+  text-align: center;
+  border: .5px solid lightgrey;
+  background-color: #f0f0f0;
+  padding: 3px;
+  border-radius: 3px;
+  width: 100%;
+}
+/*# sourceMappingURL=navbar.css.map */

@@ -1,0 +1,27 @@
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock %}
+<div class="container-fluid-lg border" id="nav-wrapper">
+    <div class="container-md">
+        <div class="row">
+            <div class="mx-lg-5 px-lg-5 px-sm-2 d-flex align-items-center">
+                <div id="logo" class="col-md-4 col-sm-6">
+                    <a href="">
+                        <p class="my-0 py-0">Instagram</p>
+                    </a>
+                </div>
+                <div id="searchDiv" class="col-md-4 d-none d-md-flex">
+                    <form>
+                        <input type="text" placeholder="&#xF002; Search"
+                            id="search" />
+                    </form>
+                </div>
+                <div id="nav" class="col-md-4 col-sm-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
