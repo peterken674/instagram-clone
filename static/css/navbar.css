@@ -8,7 +8,7 @@
   margin-right: auto;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1366px) {
   #nav-wrapper > div {
     width: 50%;
   }
