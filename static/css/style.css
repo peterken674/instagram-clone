@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Grand+Hotel:regular);
 html {
   font-size: 16px;
 }
@@ -18,5 +19,100 @@ a {
 
 li {
   list-style: none;
+}
+
+#nav-wrapper {
+  max-width: 100%;
+}
+
+#nav-wrapper > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 1366px) {
+  #nav-wrapper > div {
+    width: 50%;
+  }
+}
+
+#nav-wrapper #logo a {
+  color: #202020;
+}
+
+#nav-wrapper #logo a p {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 2rem;
+}
+
+#nav-wrapper #searchDiv #search {
+  font-family: Roboto, 'FontAwesome';
+  font-weight: lighter;
+  font-size: 0.95rem;
+  text-align: center;
+  border: .5px solid lightgrey;
+  background-color: #f0f0f0;
+  padding: 3px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+#nav-wrapper #searchDiv #search:focus {
+  outline: none;
+}
+
+#nav-wrapper #searchDiv #search:focus::-webkit-input-placeholder {
+  color: #f0f0f0;
+}
+
+#nav-wrapper #searchDiv #search:focus:-ms-input-placeholder {
+  color: #f0f0f0;
+}
+
+#nav-wrapper #searchDiv #search:focus::-ms-input-placeholder {
+  color: #f0f0f0;
+}
+
+#nav-wrapper #searchDiv #search:focus::placeholder {
+  color: #f0f0f0;
+}
+
+#nav-wrapper #nav {
+  height: 100%;
+}
+
+#nav-wrapper #nav ul {
+  width: 100%;
+  height: inherit;
+  margin-right: 0;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+#nav-wrapper #nav ul li a {
+  color: lightgrey;
+  margin: 0;
+  height: 100%;
+}
+
+#nav-wrapper #nav ul li a i {
+  font-size: 1.6rem;
+  font-weight: light;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#nav-wrapper #nav ul li a i::after {
+  content: "";
+  display: none;
+}
+
+#nav-wrapper #nav ul li a:hover {
+  color: grey;
 }
 /*# sourceMappingURL=style.css.map */
