@@ -1,13 +1,14 @@
 {% load static %}
 {% block styles %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 {% endblock %}
-<div class="container-fluid-lg border" id="nav-wrapper">
-    <div class="container-md">
+<div class="container-fluid-lg border-bottom" id="nav-wrapper">
+    <div class="container-lg">
         <div class="row">
-            <div class="mx-lg-5 px-lg-5 px-sm-2 d-flex align-items-center">
-                <div id="logo" class="col-md-4 col-sm-6">
+            <div class="d-flex align-items-center justify-content-evenly">
+                <div id="logo" class="col-md-4">
                     <a href="">
                         <p class="my-0 py-0">Instagram</p>
                     </a>
@@ -18,8 +19,14 @@
                             id="search" />
                     </form>
                 </div>
-                <div id="nav" class="col-md-4 col-sm-6">
-
+                <div id="nav" class="col-md-4 flex-grow-1 align-items-center">
+                    <ul class="d-flex align-items-centre justify-content-between">
+                        <li><a href="#"><i class='bx bxs-home'></i></a></li>
+                        <li><a href="#"><i class='bx bxl-messenger'></i></a></li>
+                        <li><a href="#"><i class='bx bx-message-square-add'></i></i></a></li>
+                        <li><a href="#"><i class='bx bx-heart'></i></i></a></li>
+                        <li><a href="#"><i class='bx bx-user-circle'></i></i></a></li>
+                    </ul>
                 </div>
             </div>
         </div>

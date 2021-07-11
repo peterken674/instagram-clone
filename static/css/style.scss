@@ -6,8 +6,13 @@ body, *{
     padding: 0;
     box-sizing: border-box;
     font-family: Roboto, san-serif;
+    transition: all 150ms;
+    // outline: 1px solid red;
 }
 
 a{
     text-decoration: none;
+}
+li{
+    list-style: none;
 }

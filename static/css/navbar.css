@@ -1,4 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Grand+Hotel:regular);
+#nav-wrapper {
+  max-width: 100%;
+}
+
+#nav-wrapper > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 992px) {
+  #nav-wrapper > div {
+    width: 50%;
+  }
+}
+
 #nav-wrapper #logo a {
   color: #202020;
 }
@@ -18,5 +33,44 @@
   padding: 3px;
   border-radius: 3px;
   width: 100%;
+}
+
+#nav-wrapper #nav {
+  height: 100%;
+}
+
+#nav-wrapper #nav ul {
+  width: 100%;
+  height: inherit;
+  margin-right: 0;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+#nav-wrapper #nav ul li a {
+  color: lightgrey;
+  margin: 0;
+  height: 100%;
+}
+
+#nav-wrapper #nav ul li a i {
+  font-size: 1.6rem;
+  font-weight: light;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#nav-wrapper #nav ul li a i::after {
+  content: "";
+  display: none;
+}
+
+#nav-wrapper #nav ul li a:hover {
+  color: grey;
 }
 /*# sourceMappingURL=navbar.css.map */
