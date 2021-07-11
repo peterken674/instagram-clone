@@ -126,7 +126,7 @@ li{
         margin-right: auto;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1080px) {
         &>div {
             width: 50%;
         }
@@ -135,6 +135,12 @@ li{
     #main {
         .status{
             overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            overflow-x: scroll;
+            &::-webkit-scrollbar{
+                display: none;
+            }
             .status-item{
                 width: fit-content;
                 text-align: center;
@@ -205,7 +211,7 @@ li{
         .post-footer-icons{
             a{
                 i{
-                    font-size: 2rem;
+                    font-size: 1.5rem;
                     color: grey;
                     font-weight: lighter;
                 }
@@ -224,7 +230,7 @@ li{
 
     .comment-input{
         .emoji{
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-right: .5rem;
             color: grey;
         }
@@ -258,3 +264,4 @@ li{
         }
     }
 }
+

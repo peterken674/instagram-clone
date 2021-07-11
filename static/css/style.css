@@ -136,7 +136,7 @@ li {
   margin-right: auto;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1080px) {
   #contentWrapper > div {
     width: 50%;
   }
@@ -144,6 +144,13 @@ li {
 
 #contentWrapper #main .status {
   overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-x: scroll;
+}
+
+#contentWrapper #main .status::-webkit-scrollbar {
+  display: none;
 }
 
 #contentWrapper #main .status .status-item {
@@ -228,7 +235,7 @@ li {
 }
 
 .post .post-footer .post-footer-icons a i {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: grey;
   font-weight: lighter;
 }
@@ -243,7 +250,7 @@ li {
 }
 
 .post .comment-input .emoji {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-right: .5rem;
   color: grey;
 }
