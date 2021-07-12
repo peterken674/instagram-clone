@@ -8,7 +8,7 @@
         <div class="row">
                 <div id="main" class="col-lg-8 col-md-12 my-4">
                     <div class="card py-3">
-                        <div class="status d-flex">
+                        <div class="status d-flex py-2">
                             <div class="status-item mx-2 ms-4">
                                 <div class="status-div">
                                     <a href="#">
@@ -79,6 +79,7 @@
                     <!-- END OF STATUS -->
 
                     <!-- FEED -->
+                    {% for post in posts %}
                     <div class="card mt-4 post">
                         <div class="post-header px-4 py-3">
                             <div class="post-header-left">
@@ -86,7 +87,7 @@
                                     <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200" alt="" class="img-fluid">
                                 </div>
                                 <div class="post-header-username mx-2">
-                                    <small><strong>nickiminaj</strong></small>
+                                    <small><strong>{{ post.user.user.username }}</strong></small>
                                 </div>
                             </div>
                             <div class="post-header-right">
@@ -94,7 +95,7 @@
                             </div>
                         </div>
                         <div class="post-content">
-                            <img src="https://assets.teenvogue.com/photos/5ff1d12858127b1a10f9177e/16:9/w_2560%2Cc_limit/GettyImages-839984712.jpg"
+                            <img src="{{ post.image.url }}"
                                 alt="">
                         </div>
 
@@ -111,12 +112,12 @@
                             </div>
                             <div class="post-footer-details px-2 my-0">
                                 <p><strong>1,994,195 likes</strong></p>
-                                <p><strong>nickiminaj</strong> And you can’t be round no #HoeShit ...<span class="text-muted">more</span>
+                                <p><strong>{{ post.user.user.username }}</strong> {{ post.description }}<span class="text-muted">more</span>
                                 </p>
                                 <p><a class="text-muted" href="#">View all 17,493 comments</a></p>
                                 <p><strong>ankushrz</strong> Eeeey! </p>
                                 <p><strong>prince_kaya</strong> Barbie 4 life. </p>
-                                <p class="text-muted time">1 DAY AGO</p>
+                                <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
                             </div>
                         </div>
                        
@@ -131,8 +132,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
+                {% endfor %}
                 <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block">
                     
                 </div>

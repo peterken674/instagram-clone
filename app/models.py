@@ -1,16 +1,21 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
-from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
+from django.db.models.deletion import CASCADE
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from cloudinary.models import CloudinaryField
 
+
+
+# Create your models here.
 class Profile(models.Model):
-    '''Class to define a user's profile.
-    '''
-    user = models.OneToOneField(User, on_delete=CASCADE, null=True)
-    profile_pic = CloudinaryField('image', null=True)
-    bio = models.TextField(null=True)
+    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
+    name=models.CharField(max_length=50)
+    bio=models.TextField(max_length=500,blank=True)
+    profile_pic=CloudinaryField('images')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -22,58 +27,79 @@ class Profile(models.Model):
         instance.profile.save()
 
     def save_profile(self):
-        '''Method to save the profile to the database.
-        '''
-        self.save()
+        self.user
 
     def delete_profile(self):
-        '''Method to delete the profile from the database.
-        '''
         self.delete()
 
     @classmethod
-    def update_profile(cls, id, pic):
-        '''Method to update the profile in the database.
+    def search_profile(cls, search_term):
+        return cls.objects.filter(user__username__icontains=search_term).all()
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+
+class Post(models.Model):
+    image = CloudinaryField('images')
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=250, blank=True)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
         '''
-        return cls.objects.filter(id=id).update(profile_pic=pic)
+        Class method to display images by date published
+        '''
+        ordering = ["-pk"]
 
-    # def __str__(self) :
-    #     user = User.objects.get(id=self.user_id)
-    #     return user.username
-class Image(models.Model):
-    '''Class to define attributes of an image in the gallery, and it's methods.
-    '''
-    image = CloudinaryField('image', null=True)
-    name = models.CharField(max_length=150)
-    caption = models.TextField(null=True)
-    post_date = models.DateTimeField(auto_now_add=True)
-    profile = models.ForeignKey(Profile, on_delete=CASCADE)
-
-    def save_image(self):
-        '''Method to save the image to the database.
+    def save_post(self):
+        '''
+        Method to save our images
         '''
         self.save()
 
-    def delete_image(self):
-        '''Method to delete the image from the database.
+    def delete_post(self):
+        '''
+        Method to delete our images
         '''
         self.delete()
 
-    @classmethod
-    def update_image(cls, id, image):
-        '''Method to update the image in the database.
-        '''
-        return cls.objects.filter(id=id).update(image=image)
     
+    def num_liked(self):
+        return self.likes.count()
+
+    
+
     def __str__(self):
-        self.name
+        return self.title
 
-class Likes(models.Model):
-    image = models.ForeignKey(Image, on_delete=CASCADE, related_name="likes")
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="likes")
 
 class Comment(models.Model):
-    comment = models.TextField(null=True)
+    comment = models.TextField()
+    post=models.ForeignKey(Post,related_name='comments',on_delete=models.CASCADE)
+    user=models.ForeignKey(Profile,related_name='comments',on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
 
+    def save_comment(self):
+        self.save()
 
+    def delete_comment(self):
+        self.delete()
+
+    @classmethod
+    def get_comments(cls,id):
+        comments = cls.objects.filter(post__id=id)
+        return comments
+
+    def __str__(self):
+        return self.comment
+    class Meta:
+        ordering=["-pk"]
+
+class Follow(models.Model):
+    follower=models.ForeignKey(Profile,related_name='followers',on_delete=models.CASCADE)
+    followed=models.ForeignKey(Profile,related_name='followed',on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.follower
