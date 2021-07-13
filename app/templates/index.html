@@ -207,11 +207,11 @@
                                 </div>
                                 <div class="post-header-username mx-2 d-flex flex-column">
                                     <small><strong>{{user.username}}</strong></small>
-                                    <small class="text-muted">Peter Ken</small>
+                                    <small class="text-muted">{{user.first_name}} {{user.last_name}}</small>
                                 </div>
                             </div>
                             <div class="post-header-right">
-                                <small class="text-primary"><strong>Logout</strong></small>
+                                <small class="text-primary"><strong><a href="{% url 'logout'%}">Logout</a></strong></small>
                             </div>
                         </div>
                     </div>
