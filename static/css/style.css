@@ -136,7 +136,7 @@ li {
   margin-right: auto;
 }
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1366px) {
   #contentWrapper > div {
     width: 50%;
   }
@@ -185,16 +185,23 @@ li {
   font-size: 2rem;
 }
 
-.post .post-header {
+.post-header,
+.logged-user {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  outline: 1px solid red;
 }
 
-.post .post-header .post-header-left {
+.post-header .post-header-left,
+.logged-user .post-header-left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -203,7 +210,8 @@ li {
           align-items: center;
 }
 
-.post .post-header .post-header-left .post-header-profilepic {
+.post-header .post-header-left .post-header-profilepic,
+.logged-user .post-header-left .post-header-profilepic {
   height: 35px;
   width: 35px;
   border-radius: 50%;
@@ -212,90 +220,92 @@ li {
   overflow: hidden;
 }
 
-.post .post-header .post-header-left .post-header-profilepic img {
+.post-header .post-header-left .post-header-profilepic img,
+.logged-user .post-header-left .post-header-profilepic img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.post .post-header .post-header-left .post-header-username small {
+.post-header .post-header-left .post-header-username small,
+.logged-user .post-header-left .post-header-username small {
   line-height: 1;
   margin: 0;
 }
 
-.post .post-content {
+.post-content {
   width: 100%;
 }
 
-.post .post-content img {
+.post-content img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.post .post-footer .post-footer-icons a i {
+.post-footer .post-footer-icons a i {
   font-size: 1.5rem;
   color: grey;
   font-weight: lighter;
 }
 
-.post .post-footer .post-footer-details p {
+.post-footer .post-footer-details p {
   line-height: 1;
   font-size: 14px;
 }
 
-.post .post-footer .post-footer-details p.time {
+.post-footer .post-footer-details p.time {
   font-size: 12px;
 }
 
-.post .comment-input .emoji {
+.comment-input .emoji {
   font-size: 1.5rem;
   margin-right: .5rem;
   color: grey;
 }
 
-.post .comment-input .comment {
+.comment-input .comment {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.post .comment-input .comment form {
+.comment-input .comment form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.post .comment-input .comment form input {
+.comment-input .comment form input {
   border: none;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.post .comment-input .comment form input::-webkit-input-placeholder {
+.comment-input .comment form input::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-.post .comment-input .comment form input:-ms-input-placeholder {
+.comment-input .comment form input:-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.post .comment-input .comment form input::-ms-input-placeholder {
+.comment-input .comment form input::-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.post .comment-input .comment form input::placeholder {
+.comment-input .comment form input::placeholder {
   opacity: 0.5;
 }
 
-.post .comment-input .comment form input:focus {
+.comment-input .comment form input:focus {
   outline: none;
   border: none;
 }
 
-.post .comment-input .comment form button {
+.comment-input .comment form button {
   justify-self: flex-end;
   border: none;
   background-color: transparent;
@@ -304,7 +314,33 @@ li {
   opacity: 0.6;
 }
 
-.post .comment-input .comment form button:hover {
+.comment-input .comment form button:hover {
   opacity: 1;
+}
+
+.comments-container .user-header .post-header-profilepic {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 0 2px white, 0 0 0 4px orange;
+          box-shadow: 0 0 0 2px white, 0 0 0 4px orange;
+}
+
+.comments-container .user-header .post-header-profilepic img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#subContent {
+  position: relative;
+  background-color: red;
+}
+
+#subContent .affix {
+  width: inherit;
+  background-color: yellow;
 }
 /*# sourceMappingURL=style.css.map */

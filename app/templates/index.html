@@ -135,10 +135,11 @@
                                 </div>
                             </div>
                             <div class="post-footer-details px-2 my-0">
-                                <p><strong>1,994,195 likes</strong></p>
+                                <p><strong> {{ post.likes.count }} like{{ post.likes.count | pluralize}}</strong></p>
                                 <p><strong>{{ post.user.user.username }}</strong> {{ post.description }}<span class="text-muted">more</span>
                                 </p>
-                                <p><a class="text-muted" href="#">View all 17,493 comments</a></p>
+                                <p><a class="text-muted" href="#">View all {{ post.comments.count }}
+                                        comment{{ post.comments.count | pluralize}}</a></p>
                                 <p><strong>ankushrz</strong> Eeeey! </p>
                                 <p><strong>prince_kaya</strong> Barbie 4 life. </p>
                                 <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
@@ -174,6 +175,19 @@
                                                     alt="" class="img-fluid">
                                             </div>
                                         </div>
+                                        <div class="col-md-5">
+                                            <div class="comments-container">
+                                                <div class="user-header">
+                                                    <div class="post-header-profilepic">
+                                                        <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
+                                                            alt="" class="img-fluid">
+                                                    </div>
+                                                    <div class="post-header-username mx-2">
+                                                        <small><strong>nickiminaj</strong></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -183,8 +197,23 @@
                     <!--  -->
                 </div>
                 
-                <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block">
-                    
+                <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block pt-3">
+                    <div class="affix">
+                        <div class="logged-user">
+                            <div class="post-header-left">
+                                <div class="post-header-profilepic">
+                                    <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
+                                        alt="" class="img-fluid">
+                                </div>
+                                <div class="post-header-username mx-2">
+                                    <small><strong>_peterken</strong></small>
+                                </div>
+                            </div>
+                            <div class="post-header-right">
+                                <small><strong>Logout</strong></small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </div>
     </div>
