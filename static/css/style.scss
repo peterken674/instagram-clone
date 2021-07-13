@@ -170,7 +170,7 @@ li{
     }
 }
 
-// .post{
+.post{
     .post-header {
         width: 100%;
         display: flex;
@@ -180,7 +180,7 @@ li{
         .post-header-left{
             display: flex;
             align-items: center;
-            
+
             .post-header-profilepic{
                 height: 35px;
                 width: 35px;
@@ -266,7 +266,7 @@ li{
             }
         }
     }
-// }
+}
 
 
 // Modal
@@ -288,11 +288,34 @@ li{
     }
 }
 #subContent{
-    background-color: red;
     .affix{
-        width: fit-content;
-        background-color: yellow;
+        height: fit-content;
+        width: 100%;
         padding: 0;
         margin: 0;
+        .logged-user{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+            .profile-header-left{
+              display: flex;
+              align-items: center;
+                .profile-header-profilepic{
+                  display: flex;
+                  align-items: center;
+                  width: 45px;
+                  height: 45px;
+                  overflow: hidden;
+                  border-radius: 50%;
+                  box-shadow: 0 0 0 1px white,
+                              0 0 0 3px orange;
+                  img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                  }
+                }
+            }
+        }
     }
 }

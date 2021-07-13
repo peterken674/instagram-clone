@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
 
 {% block content %}
 
@@ -95,10 +95,10 @@
                                     <small>nickiminaj</small>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
-                   
+
                     <!-- END OF STATUS -->
 
                     <!-- FEED -->
@@ -145,7 +145,7 @@
                                 <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
                             </div>
                         </div>
-                       
+
                         <div class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2">
                              <hr>
                             <div class="emoji"><i class='bx bx-smile'></i></div>
@@ -196,21 +196,22 @@
 
                     <!--  -->
                 </div>
-                
-                <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block pt-3">
+
+                <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block pt-3 position-fixed offset-8">
                     <div class="affix">
                         <div class="logged-user">
-                            <div class="post-header-left">
-                                <div class="post-header-profilepic">
-                                    <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
+                            <div class="profile-header-left">
+                                <div class="profile-header-profilepic">
+                                    <img src="{% static 'img/default.png' %}"
                                         alt="" class="img-fluid">
                                 </div>
-                                <div class="post-header-username mx-2">
-                                    <small><strong>_peterken</strong></small>
+                                <div class="post-header-username mx-2 d-flex flex-column">
+                                    <small><strong>{{user.username}}</strong></small>
+                                    <small class="text-muted">Peter Ken</small>
                                 </div>
                             </div>
                             <div class="post-header-right">
-                                <small><strong>Logout</strong></small>
+                                <small class="text-primary"><strong>Logout</strong></small>
                             </div>
                         </div>
                     </div>
