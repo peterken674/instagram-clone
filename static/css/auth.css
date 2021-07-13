@@ -34,10 +34,10 @@ body {
 }
 
 .wrapper .header .form .input_field {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.wrapper .header .form .input_field input {
+.wrapper .header .form .input_field .input {
   width: 100%;
   background: #fafafa;
   border: 1px solid #efefef;
@@ -47,7 +47,7 @@ body {
   padding: 10px;
 }
 
-.wrapper .header .form .input_field input:focus {
+.wrapper .header .form .input_field .input:focus {
   border: 1px solid #b2b2b2;
 }
 
@@ -55,14 +55,11 @@ body {
   margin: 10px 0;
   background-color: #3897f0;
   border: 1px solid #3897f0;
+  color: white;
   border-radius: 4px;
   text-align: center;
   padding: 5px;
-}
-
-.wrapper .header .form .btn a {
-  color: #fff;
-  display: block;
+  width: 100%;
 }
 
 .wrapper .header .or {
@@ -75,8 +72,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 15px;
-  margin: 15px 0 20px;
+  margin: 20px 0;
 }
 
 .wrapper .header .or .line {
@@ -88,14 +84,13 @@ body {
 .wrapper .header .or p {
   color: #999;
   font-size: 12px;
+  line-height: 0;
+  margin-bottom: 0;
 }
 
 .wrapper .signup {
-  background: #fff;
-  border: 1px solid #e6e6e6;
-  border-radius: 1px;
   padding: 40px 40px 20px;
-  margin: 10px 0 20px;
+  margin: 10px;
   padding: 25px 40px;
   text-align: center;
   color: #262626;
@@ -117,12 +112,17 @@ body {
           align-items: center;
 }
 
-.wrapper .dif .fb img {
-  width: 16px;
+.wrapper .dif .fb > div {
   height: 16px;
 }
 
-.wrapper .dif .fb p {
+.wrapper .dif .fb > div img {
+  width: auto;
+  height: 100%;
+}
+
+.wrapper .dif .fb > div p {
+  height: 100%;
   color: #385185;
   font-weight: 500;
   margin-left: 10px;
@@ -154,16 +154,20 @@ body {
 }
 
 .footer {
-  max-width: 935px;
+  position: absolute;
   width: 100%;
-  margin: 0 auto;
   padding: 40px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 0;
 }
 
 .footer .links ul li {

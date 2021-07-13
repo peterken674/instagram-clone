@@ -1,9 +1,6 @@
 {%extends "accounts/base.html"%} 
-{% load bootstrap5 %}
 {% load static %}
-{% block styles %}
-<link rel="stylesheet" href="{% static 'css/auth.css' %}">
-{%endblock%}
+
 {% block content%}
 
 <div class="wrapper">
@@ -12,15 +9,16 @@
             <div class="logo">
                 <img src="{% static 'img/instagram.png' %}" alt="instagram" style="width: 175px;">
             </div>
-            <div class="form">
+            {{ form.errors }}
+            <form class="form" action="" method="POST">
                 <div class="input_field">
-                    <input type="text" placeholder="Phone number, username, or email" class="input">
+                    <input type="text" placeholder="Username" class="input">
                 </div>
                 <div class="input_field">
                     <input type="password" placeholder="Password" class="input">
                 </div>
-                <div class="btn"><a href="#">Log In</a></div>
-            </div>
+                <button type="submit" class="btn">Log In</button>
+            </form>
             <div class="or">
                 <div class="line"></div>
                 <p>OR</p>
@@ -28,16 +26,15 @@
             </div>
             <div class="dif">
                 <div class="fb">
-                    <img src="{% static 'img/facebook.png' %}" alt="facebook">
-                    <p>Log in with Facebook</p>
-                </div>
-                <div class="forgot">
-                    <a href="#">Forgot password?</a>
+                    <div><img src=" {% static 'img/facebook.png' %}" alt="facebook"></div>
+                    <div>
+                        <p>Log in with Facebook</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="signup">
-            <p>Don't have an account? <a href="#">Sign up</a></p>
+            <p>Don't have an account? <a href="{% url 'register'%}">Sign up</a></p>
         </div>
         <div class="apps">
             <p>Get the app.</p>

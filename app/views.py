@@ -1,5 +1,5 @@
 from app.models import Post
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 
@@ -14,9 +14,10 @@ def register(request):
     title = 'New Account'
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('login')
 
     context = {'form': form, 'title': title}
     return render(request, 'accounts/registration.html', context)

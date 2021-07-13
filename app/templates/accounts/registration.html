@@ -1,9 +1,5 @@
 {%extends "accounts/base.html"%}
-{% load bootstrap5 %}
 {% load static %}
-{% block styles %}
-<link rel="stylesheet" href="{% static 'css/auth.css' %}">
-{%endblock%}
 {% block content%}
 
 <div class="wrapper">
@@ -12,13 +8,8 @@
             <div class="logo">
                 <img src="{% static 'img/instagram.png' %}" alt="instagram" style="width: 175px;">
             </div>
-            <div class="dif my-4">
-                <div class="fb">
-                    <img src="{% static 'img/facebook.png' %}" alt="facebook">
-                    <p>Log in with Facebook</p>
-                </div>
-            </div>
-            <form class="form">
+            {{ form.errors }}
+            <form class="form" action="" method="POST">
                 {% csrf_token %}
                 <div class="input_field">
                     {{ form.first_name }}
@@ -38,17 +29,25 @@
                 <div class="input_field">
                     {{ form.password2 }}
                 </div>
-                <div class="btn"><a href="#">Sign Up</a></div>
+
+                <button class="btn">Sign Up</button>
             </form>
             <div class="or">
                 <div class="line"></div>
                 <p>OR</p>
                 <div class="line"></div>
             </div>
-            
+            <div class="dif">
+                <div class="fb">
+                    <div><img src=" {% static 'img/facebook.png' %}" alt="facebook"></div>
+                    <div>
+                        <p>Log in with Facebook</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="signup">
-            <p class="text-upper">Have an account? <a href="#">Sign in</a></p>
+            <p>Already have an account? <a href="{% url 'login'%}">Sign in</a></p>
         </div>
         <div class="apps">
             <p>Get the app.</p>
@@ -75,9 +74,24 @@
             </ul>
         </div>
         <div class="copyright">
-            ©2020 INSTAGRAM
+            © 2019 INSTAGRAM
         </div>
     </div>
 </div>
+<script>
 
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'First name';
+    form_fields[2].placeholder = 'Last name';
+    form_fields[3].placeholder = 'Username';
+    form_fields[4].placeholder = 'Email';
+    form_fields[5].placeholder = 'Password';
+    form_fields[6].placeholder = 'Confirm password';
+
+
+    for (var field in form_fields) {
+        form_fields[field].className += 'input'
+        form_fields[field].required = true
+    }
+</script>
 {%endblock%}

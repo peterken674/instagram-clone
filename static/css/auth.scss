@@ -36,9 +36,9 @@ body {
 
         .form {
             .input_field {
-                margin-bottom: 5px;
+                margin-bottom: 10px;
 
-                input {
+                .input {
                     width: 100%;
                     background: #fafafa;
                     border: 1px solid #efefef;
@@ -57,14 +57,11 @@ body {
                 margin: 10px 0;
                 background-color: #3897f0;
                 border: 1px solid #3897f0;
+                color: white;
                 border-radius: 4px;
                 text-align: center;
                 padding: 5px;
-
-                a {
-                    color: #fff;
-                    display: block;
-                }
+                width: 100%;
             }
         }
 
@@ -72,8 +69,7 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 15px;
-            margin: 15px 0 20px;
+            margin: 20px 0;
 
             .line {
                 width: 105px;
@@ -84,16 +80,16 @@ body {
             p {
                 color: #999;
                 font-size: 12px;
+                line-height: 0;
+                margin-bottom: 0;
             }
         }
     }
 
     .signup {
-        background: #fff;
-        border: 1px solid #e6e6e6;
-        border-radius: 1px;
+
         padding: 40px 40px 20px;
-        margin: 10px 0 20px;
+        margin: 10px;
         padding: 25px 40px;
         text-align: center;
         color: #262626;
@@ -108,17 +104,23 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-
-            img {
-                width: 16px;
+            &>div{
                 height: 16px;
+                img {
+                    width: auto;
+                    height: 100%;
+                }
+                p {
+                    height: 100%;
+                    color: #385185;
+                    font-weight: 500;
+                    margin-left: 10px;
+                }
             }
 
-            p {
-                color: #385185;
-                font-weight: 500;
-                margin-left: 10px;
-            }
+            
+
+            
         }
 
         .forgot {
@@ -151,12 +153,13 @@ body {
 }
 
 .footer {
-    max-width: 935px;
+    position: absolute;
     width: 100%;
-    margin: 0 auto;
     padding: 40px 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
 
     .links {
         ul {
