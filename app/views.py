@@ -1,7 +1,7 @@
 from app.models import Post
 from django.shortcuts import redirect, render
-from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
+from django.contrib.auth import authenticate, login, logout
 
 
 def index(request):
@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'index.html', {'posts': posts})
 
 
-def register(request):
+def register_user(request):
     form = CreateUserForm
     title = 'New Account'
 
@@ -23,7 +23,19 @@ def register(request):
     return render(request, 'accounts/registration.html', context)
 
 
-def login(request):
+def login_user(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+
+
     context = {}
     return render(request, 'accounts/login.html', context)
 

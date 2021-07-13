@@ -9,13 +9,18 @@
             <div class="logo">
                 <img src="{% static 'img/instagram.png' %}" alt="instagram" style="width: 175px;">
             </div>
-            {{ form.errors }}
+            {% if form.errors %}
+            <div class="alert-danger py-1 mb-1 rounded">
+                <p class="text-danger m-3">Username or password is incorrect.</p>
+            </div>
+            {% endif %}
             <form class="form" action="" method="POST">
+                {% csrf_token %}
                 <div class="input_field">
-                    <input type="text" placeholder="Username" class="input">
+                    <input type="text" placeholder="Username" class="input" name="username" id="username">
                 </div>
                 <div class="input_field">
-                    <input type="password" placeholder="Password" class="input">
+                    <input type="password" placeholder="Password" class="input" name="password" id="password">
                 </div>
                 <button type="submit" class="btn">Log In</button>
             </form>
