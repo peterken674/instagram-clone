@@ -3,8 +3,7 @@ from django.shortcuts import redirect, render
 from .forms import CreateUserForm, UploadImageForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from cloudinary.forms import cl_init_js_callbacks     
-from django.contrib.auth.models import User 
+from cloudinary.forms import cl_init_js_callbacks
 from django.http import HttpResponseRedirect
 
 from django.contrib import messages
@@ -15,21 +14,21 @@ def index(request):
     posts = Post.objects.all()
 
     if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
+        upload_form = UploadImageForm(request.POST, request.FILES)
         
-        if form.is_valid():
-            form.instance.user = request.user.profile
-            form.save()
+        if upload_form.is_valid():
+            upload_form.instance.user = request.user.profile
+            upload_form.save()
 
             return redirect('index')
 
         else:
-            print(form.errors)
+            print(upload_form.errors)
 
     else:
-        form = UploadImageForm()
+        upload_form = UploadImageForm()
 
-    context = {'upload_form': form, 'posts':posts}
+    context = {'upload_form': upload_form, 'posts':posts}
 
     return render(request, 'index.html',context)
 
@@ -77,3 +76,16 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+def comment(request, post_id):
+    post = Post.objects.get(id=post_id)
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST, request.FILES)
+        if comment_form.is_valid():
+            comment_form.instance.user = request.user.profile
+            comment_form.instance.post = post
+
+            comment_form.save()
+
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
