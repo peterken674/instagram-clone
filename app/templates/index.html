@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 {% block content %}
 
@@ -16,8 +16,7 @@
                 ...
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Post</button>
             </div>
         </div>
     </div>
@@ -28,94 +27,93 @@
 <div class="container-fluid-lg">
     <div class="container-lg" id="contentWrapper">
         <div class="row">
-                <div id="main" class="col-lg-8 col-md-12 my-4">
-                    
-                    {% include 'statuses.html'%}
+            <div id="main" class="col-lg-8 col-md-12 my-4">
 
-                    <!-- FEED -->
-                    {% for post in posts %}
-                    <div class="card mt-4 post">
-                        <div class="post-header px-4 py-3">
-                            <div class="post-header-left">
-                                <div class="post-header-profilepic">
-                                    <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200" alt="" class="img-fluid">
-                                </div>
-                                <div class="post-header-username mx-2">
-                                    <small><strong>{{ post.user.user.username }}</strong></small>
-                                </div>
+                {% include 'statuses.html'%}
+
+                <!-- FEED -->
+                {% for post in posts %}
+                <div class="card mt-4 post">
+                    <div class="post-header px-4 py-3">
+                        <div class="post-header-left">
+                            <div class="post-header-profilepic">
+                                <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
+                                    alt="" class="img-fluid">
                             </div>
-                            <div class="post-header-right">
-                                <h5><a href="#">...</a></h5>
+                            <div class="post-header-username mx-2">
+                                <small><strong>{{ post.user.user.username }}</strong></small>
                             </div>
                         </div>
-                        <div class="post-content" data-bs-toggle="modal" data-bs-target="#imageModal"
-                            data-url="{{ post.image.url }}">
-                            <img src="{{ post.image.url }}"
-                                alt="">
-                        </div>
-
-                        <div class="post-footer">
-                            <div class="post-footer-icons d-flex justify-content-between p-2">
-                                <div class="post-footer-icons-left">
-                                    <a href="#"><i class='bx bx-heart px-2 ms-0'></i></a>
-                                    <a href="#"><i class='bx bx-message-rounded px-2'></i></a>
-                                    <a href="#"><i class='bx bx-paper-plane px-2'></i></a>
-                                </div>
-                                <div class="post-footer-icons-right">
-                                    <a href="#"><i class='bx bx-bookmark px-2'></i></a>
-                                </div>
-                            </div>
-                            <div class="post-footer-details px-2 my-0">
-                                <p><strong> {{ post.likes.count }} like{{ post.likes.count | pluralize}}</strong></p>
-                                <p><strong>{{ post.user.user.username }}</strong> {{ post.description }}<span class="text-muted">more</span>
-                                </p>
-                                <p><a class="text-muted" href="#">View all {{ post.comments.count }}
-                                        comment{{ post.comments.count | pluralize}}</a></p>
-                                <p><strong>ankushrz</strong> Eeeey! </p>
-                                <p><strong>prince_kaya</strong> Barbie 4 life. </p>
-                                <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
-                            </div>
-                        </div>
-
-                        <div class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2">
-                             <hr>
-                            <div class="emoji"><i class='bx bx-smile'></i></div>
-                            <div class="comment">
-                                <form action="#">
-                                    <input type="text" name="comment" id="comment" placeholder="Add a comment...">
-                                    <button>Post</button>
-                                </form>
-                            </div>
+                        <div class="post-header-right">
+                            <h5><a href="#">...</a></h5>
                         </div>
                     </div>
-                    {% endfor %}
+                    <div class="post-content" data-bs-toggle="modal" data-bs-target="#imageModal"
+                        data-url="{{ post.image.url }}">
+                        <img src="{{ post.image.url }}" alt="">
+                    </div>
 
-                    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <div class="img-container">
-                                                <img
-                                                    alt="" class="img-fluid">
-                                            </div>
+                    <div class="post-footer">
+                        <div class="post-footer-icons d-flex justify-content-between p-2">
+                            <div class="post-footer-icons-left">
+                                <a href="#"><i class='bx bx-heart px-2 ms-0'></i></a>
+                                <a href="#"><i class='bx bx-message-rounded px-2'></i></a>
+                                <a href="#"><i class='bx bx-paper-plane px-2'></i></a>
+                            </div>
+                            <div class="post-footer-icons-right">
+                                <a href="#"><i class='bx bx-bookmark px-2'></i></a>
+                            </div>
+                        </div>
+                        <div class="post-footer-details px-2 my-0">
+                            <p><strong> {{ post.likes.count }} like{{ post.likes.count | pluralize}}</strong></p>
+                            <p><strong>{{ post.user.user.username }}</strong> {{ post.description }}<span
+                                    class="text-muted">more</span>
+                            </p>
+                            <p><a class="text-muted" href="#">View all {{ post.comments.count }}
+                                    comment{{ post.comments.count | pluralize}}</a></p>
+                            <p><strong>ankushrz</strong> Eeeey! </p>
+                            <p><strong>prince_kaya</strong> Barbie 4 life. </p>
+                            <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
+                        </div>
+                    </div>
+
+                    <div class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2">
+                        <hr>
+                        <div class="emoji"><i class='bx bx-smile'></i></div>
+                        <div class="comment">
+                            <form action="#">
+                                <input type="text" name="comment" id="comment" placeholder="Add a comment...">
+                                <button>Post</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="img-container">
+                                            <img alt="" class="img-fluid">
                                         </div>
-                                        <div class="col-md-5">
-                                            <div class="comments-container">
-                                                <div class="user-header">
-                                                    <div class="post-header-profilepic">
-                                                        <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
-                                                            alt="" class="img-fluid">
-                                                    </div>
-                                                    <div class="post-header-username mx-2">
-                                                        <small><strong>nickiminaj</strong></small>
-                                                    </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="comments-container">
+                                            <div class="user-header">
+                                                <div class="post-header-profilepic">
+                                                    <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
+                                                        alt="" class="img-fluid">
+                                                </div>
+                                                <div class="post-header-username mx-2">
+                                                    <small><strong>nickiminaj</strong></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,30 +122,32 @@
                             </div>
                         </div>
                     </div>
-
-                    <!--  -->
                 </div>
 
-                <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block pt-3 position-fixed offset-8">
-                    <div class="affix">
-                        <div class="logged-user">
-                            <div class="profile-header-left">
-                                <div class="profile-header-profilepic">
-                                    <img src="{% static 'img/default.png' %}"
-                                        alt="" class="img-fluid">
-                                </div>
-                                <div class="post-header-username mx-2 d-flex flex-column">
-                                    <small><strong>{{user.username}}</strong></small>
-                                    <small class="text-muted">{{user.first_name}} {{user.last_name}}</small>
-                                </div>
+                <!--  -->
+            </div>
+
+            <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block pt-3 position-fixed offset-8">
+                <div class="affix">
+                    <div class="logged-user">
+                        <div class="profile-header-left">
+                            <div class="profile-header-profilepic">
+                                <img src="{% static 'img/default.png' %}" alt="" class="img-fluid">
                             </div>
-                            <div class="post-header-right">
-                                <small class="text-primary"><strong><a href="{% url 'logout'%}">Logout</a></strong></small>
+                            <div class="post-header-username mx-2 d-flex flex-column">
+                                <small><strong>{{user.username}}</strong></small>
+                                <small class="text-muted">{{user.first_name}} {{user.last_name}}</small>
                             </div>
+                        </div>
+                        <div class="post-header-right">
+                            <small class="text-primary"><strong><a href="{% url 'logout'%}">Logout</a></strong></small>
                         </div>
                     </div>
                 </div>
+
+            </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
