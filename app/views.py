@@ -11,23 +11,25 @@ from django.contrib import messages
 
 @login_required(login_url='login')
 def index(request):
+
     posts = Post.objects.all()
 
-    # if request.method == 'POST':
-    #     upload_form = UploadImageForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
         
-    #     if upload_form.is_valid():
-    #         image = upload_form.cleaned_data.get('image')
-    #         title = upload_form.cleaned_data.get('title')
-    #         description = upload_form.cleaned_data.get('description')
-    #         post = Post(image=image, title=title, description=description, user=current_user)
+        if form.is_valid():
+            form.instance.user = request.user.profile
+            form.save()
 
-    #         post.save_post()
+            return redirect('index')
 
-    # else:
-    #     upload_form = UploadImageForm()
+        else:
+            print(form.errors)
 
-    context = {'posts':posts}
+    else:
+        form = UploadImageForm()
+
+    context = {'upload_form': form, 'posts':posts}
 
     return render(request, 'index.html',context)
 
@@ -75,28 +77,3 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
-
-@login_required(login_url='login')
-def new_post(request):
-    posts = Post.objects.all()
-
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        
-        if form.is_valid():
-            form.instance.user = request.user.profile
-            form.save()
-
-            return redirect('index')
-
-        else:
-            print(form.errors)
-
-    else:
-        form = UploadImageForm()
-
-    context = {'upload_form': form, 'posts':posts}
-
-    return render(request, 'newpost.html', context)
-
-
