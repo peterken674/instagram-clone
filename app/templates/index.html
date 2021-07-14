@@ -28,7 +28,7 @@
 
 <!--  -->
 
-<div class="container-fluid-lg">
+<div class="container-fluid">
     <div class="container-lg" id="contentWrapper">
         <div class="row">
             <div id="main" class="col-lg-8 col-md-12 my-4">
@@ -71,10 +71,16 @@
                         <div class="post-footer-details px-2 my-0">
                             <p><strong> {{ post.likes.count }} like{{ post.likes.count | pluralize}}</strong></p>
                             <p><strong>{{ post.user.user.username }}</strong> {{ post.description }}<span
-                                    class="text-muted">more</span>
+                                    class="text-muted">..more</span>
                             </p>
+                            {% if post.comments.all %}
+                            {% if post.comments.count > 3 %}
                             <p><a class="text-muted" href="#">View all {{ post.comments.count }}
                                     comment{{ post.comments.count | pluralize}}</a></p>
+                            {% endif %}
+                            {% else %}
+                            <p class="text-muted">No comments</p>
+                            {% endif %}
 <!-- Comments Loop -->
 {% for comment in post.comments.all %}
 <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment }} </p>
