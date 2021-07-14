@@ -86,21 +86,18 @@
 <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment }} </p>
 {% endfor %}
 <!----------  -->
-
-                            <p><strong>prince_kaya</strong> Barbie 4 life. </p>
                             <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
                         </div>
                     </div>
 
-                    <div class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2">
-                        <hr>
+                    <div class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2 p-2 border-top mb-2">
                         <div class="emoji"><i class='bx bx-smile'></i></div>
 
 
                         <div class="comment">
                             <form action="{% url 'comment' post_id=post.id %}" method="POST">
                                 {% csrf_token %}
-                                <input type="text" name="comment" id="comment" placeholder="Add a comment..." required>
+                                <input class="py-2 small" type="text" name="comment" id="comment" placeholder="Add a comment..." required>
                                 <button type="submit">Post</button>
                             </form>
                         </div>
