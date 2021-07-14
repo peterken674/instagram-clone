@@ -244,6 +244,10 @@ li {
   font-weight: lighter;
 }
 
+.post .post-footer .post-footer-icons a.liked i {
+  color: red !important;
+}
+
 .post .post-footer .post-footer-details p {
   line-height: 1;
   font-size: 14px;

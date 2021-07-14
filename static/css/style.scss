@@ -218,6 +218,11 @@ li{
                     font-weight: lighter;
                 }
             }
+            a.liked{
+                i {
+                    color: red !important;
+                }
+            }
         }
         .post-footer-details{
             p{

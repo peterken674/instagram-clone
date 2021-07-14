@@ -1,10 +1,13 @@
-from app.models import Post, Comment, Profile
+from django.http.response import Http404
+from app.models import Post, Comment, Profile, Like
 from django.shortcuts import redirect, render
 from .forms import CreateUserForm, UploadImageForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from cloudinary.forms import cl_init_js_callbacks
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import get_object_or_404
+import json
 
 from django.contrib import messages
 
@@ -12,6 +15,7 @@ from django.contrib import messages
 def index(request):
 
     posts = Post.objects.all()
+    liked_posts = [i for i in Post.objects.all() if Like.objects.filter(user = request.user, post=i)]
 
     if request.method == 'POST':
         upload_form = UploadImageForm(request.POST, request.FILES)
@@ -28,7 +32,7 @@ def index(request):
     else:
         upload_form = UploadImageForm()
 
-    context = {'upload_form': upload_form, 'posts':posts}
+    context = {'upload_form': upload_form, 'posts':posts, 'liked_posts': liked_posts}
 
     return render(request, 'index.html',context)
 
@@ -89,3 +93,18 @@ def comment(request, post_id):
             comment_form.save()
 
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@login_required(login_url='login')
+def like(request, post_id):
+    user = request.user
+    post = Post.objects.get(pk=post_id)
+    liked= False
+    like = Like.objects.filter(user=user, post=post)
+    if like:
+        like.delete()
+    else:
+        liked = True
+        new_like = Like(user=user, post=post)
+        new_like.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        

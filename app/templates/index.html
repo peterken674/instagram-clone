@@ -60,7 +60,16 @@
                     <div class="post-footer">
                         <div class="post-footer-icons d-flex justify-content-between p-2">
                             <div class="post-footer-icons-left">
-                                <a href="#"><i class='bx bx-heart px-2 ms-0'></i></a>
+                                
+                                {% if post in liked_posts%}
+                                <a href="{% url 'like' post_id=post.id%}"><i class='bx bxs-heart px-2 ms-0 text-danger'></i></a>
+                                {% else %}
+                                <a href="{% url 'like' post_id=post.id%}"><i class='bx bx-heart px-2 ms-0'></i></a>
+                                {% endif %}
+
+                                
+
+
                                 <a href="#"><i class='bx bx-message-rounded px-2'></i></a>
                                 <a href="#"><i class='bx bx-paper-plane px-2'></i></a>
                             </div>

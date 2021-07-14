@@ -44,7 +44,6 @@ class Post(models.Model):
     image = CloudinaryField('images')
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=250, blank=True)
-    likes = models.ManyToManyField(User, related_name='likes', blank=True)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts', null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -66,11 +65,6 @@ class Post(models.Model):
         '''
         self.delete()
 
-    
-    def num_liked(self):
-        return self.likes.count()
-
-    
 
     def __str__(self):
         return self.title
@@ -104,3 +98,7 @@ class Follow(models.Model):
 
     def __str__(self):
         return self.follower
+
+class Like(models.Model):
+	user = models.ForeignKey(User, related_name='likes', on_delete=models.CASCADE)
+	post = models.ForeignKey(Post, related_name='likes', on_delete=models.CASCADE)
