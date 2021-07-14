@@ -9,7 +9,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Profile(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
+    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile', null=True)
     name=models.CharField(max_length=50)
     bio=models.TextField(max_length=500,blank=True)
     profile_pic=CloudinaryField('images')
@@ -36,15 +36,16 @@ class Profile(models.Model):
     def search_profile(cls, search_term):
         return cls.objects.filter(user__username__icontains=search_term).all()
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f"{self.user.first_name}'s Profile"
 
 
 class Post(models.Model):
+    # image = models.ImageField(upload_to='images/')
     image = CloudinaryField('images')
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=250, blank=True)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts', null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:

@@ -3,4 +3,5 @@ $(document).ready(function(){
         url = $(this).attr('data-url');
         $('#imageModal .img-container img').attr('src', url);
     })
+    
 })
