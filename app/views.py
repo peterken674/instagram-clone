@@ -26,13 +26,10 @@ def index(request):
 
             return redirect('index')
 
-        else:
-            print(upload_form.errors)
-
     else:
         upload_form = UploadImageForm()
 
-    context = {'upload_form': upload_form, 'posts':posts, 'liked_posts': liked_posts}
+    context = {'upload_form': upload_form, 'posts':posts, 'liked_posts': liked_posts, 'range':range(1,4)}
 
     return render(request, 'index.html',context)
 

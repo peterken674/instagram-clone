@@ -1,10 +1,11 @@
+{% load static %}
 <div class="container-fluid-lg border-bottom">
     <div class="container-lg" id="navWrapper">
         <div class="row">
             <div class="d-flex align-items-center justify-content-evenly">
                 <div id="logo" class="col-md-4">
-                    <a href="">
-                        <p class="my-0 py-0">Instagram</p>
+                    <a href="{% url 'index'%}">
+                        <div class="my-0 py-0"><img src="{% static 'img/instagram.png'%}" alt="" class="img-fluid"></div>
                     </a>
                 </div>
                 <div id="searchDiv" class="col-md-4 d-none d-md-flex">

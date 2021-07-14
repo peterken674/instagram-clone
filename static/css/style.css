@@ -31,6 +31,10 @@ li {
   max-width: 100%;
   z-index: 1000;
   position: fixed;
+  -webkit-box-shadow: 0 0 1px grey;
+          box-shadow: 0 0 1px grey;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 #navWrapper > div {
@@ -48,9 +52,14 @@ li {
   color: #202020;
 }
 
-#navWrapper #logo a p {
-  font-family: 'Grand Hotel', cursive;
-  font-size: 2rem;
+#navWrapper #logo a div img {
+  height: auto;
+  max-width: 150px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #navWrapper #searchDiv #search {

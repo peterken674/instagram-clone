@@ -30,6 +30,9 @@ li{
     max-width: 100%;
     z-index: 1000;
     position: fixed;
+    box-shadow: 0 0 1px grey;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
     &>div {
         margin-left: auto;
@@ -45,11 +48,18 @@ li{
     #logo {
         a {
             color: #202020;
-
-            p {
-                font-family: 'Grand Hotel', cursive;
-                font-size: 2rem;
+            div{
+                img{
+                    height: auto;
+                    max-width: 150px;
+                    width: fit-content;
+                    object-fit: cover;
+                }
             }
+            // p {
+            //     font-family: 'Grand Hotel', cursive;
+            //     font-size: 2rem;
+            // }
         }
     }
 
