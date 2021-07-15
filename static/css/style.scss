@@ -243,6 +243,12 @@ li{
                 font-size: 12px;
             }
         }
+        #viewComments{
+            cursor: pointer;
+            &:hover{
+                color: #48adff !important;
+            }
+        }
     }
 
     .comment-input{

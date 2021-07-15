@@ -266,6 +266,14 @@ li {
   font-size: 12px;
 }
 
+.post .post-footer #viewComments {
+  cursor: pointer;
+}
+
+.post .post-footer #viewComments:hover {
+  color: #48adff !important;
+}
+
 .post .comment-input .emoji {
   font-size: 1.5rem;
   margin-right: .5rem;

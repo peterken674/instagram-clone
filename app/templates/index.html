@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="post-content" data-bs-toggle="modal" data-bs-target="#imageModal"
-                        data-url="{{ post.image.url }}" data-username="{{ post.user.user.username }}" data-profilepic="{{post.user.profile_pic.url}}">
+                        data-url="{{ post.image.url }}" data-username="{{ post.user.user.username }}" data-profilepic="{{post.user.profile_pic.url}}" data-caption="{{ post.description }}">
                         <img src="{{ post.image.url }}" alt="">
                     </div>
 
@@ -87,20 +87,24 @@
                         <div class="post-footer-details px-2 my-0">
                             <p><strong> {{ post.likes.count }} like{{ post.likes.count | pluralize}}</strong></p>
                             <p><strong>{{ post.user.user.username }}</strong>
-                                {{ post.description|truncatewords:5 }}<span
+                                {{ post.description|truncatechars:30 }}<span
                                     class="text-muted small">{%if post.description|wordcount > 5%}more{%endif%}</span>
                             </p>
                             {% if post.comments.all %}
                             {% if post.comments.count > 3 %}
-                            <p><a class="text-muted" href="#">View all {{ post.comments.count }}
-                                    comment{{ post.comments.count | pluralize}}</a></p>
+                            <p id="viewComments" data-bs-toggle="modal" data-bs-target="#imageModal" data-url="{{ post.image.url }}"
+                                data-username="{{ post.user.user.username }}"
+                                data-profilepic="{{post.user.profile_pic.url}}" data-caption="{{ post.description }}"
+                                class="text-muted">View
+                                    all {{ post.comments.count }}
+                                    comment{{ post.comments.count | pluralize}}</p>
                             {% endif %}
                             {% else %}
                             <p class="text-muted">No comments</p>
                             {% endif %}
                             <!-- Comments Loop -->
                             {% for comment in post.comments.all|slice:"3" %}
-                            <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment|truncatewords:4 }}
+                            <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment|truncatechars:20 }}
                             </p>
                             {% endfor %}
                             <!----------  -->
@@ -144,12 +148,13 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="comments-container card h-100">
-                                            <div class="user-header card-header bg-white d-flex align-content-center">
+                                            <div class="user-header card-header bg-white d-flex align-content-center border-0">
                                                 <div class="post-header-profilepic">
                                                     <img alt="" class="img-fluid">
                                                 </div>
-                                                <div class="post-header-username mx-2">
+                                                <div class="post-header-username mx-2 d-flex flex-column">
                                                     <small><strong></strong></small>
+                                                    <small id="caption"></small>
                                                 </div>
                                             </div>
                                             <div class="card-body">
