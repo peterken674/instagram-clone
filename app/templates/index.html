@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="post-content" data-bs-toggle="modal" data-bs-target="#imageModal"
-                        data-url="{{ post.image.url }}">
+                        data-url="{{ post.image.url }}" data-username="{{ post.user.user.username }}" data-profilepic="{{post.user.profile_pic.url}}">
                         <img src="{{ post.image.url }}" alt="">
                     </div>
 
@@ -143,15 +143,21 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="comments-container">
-                                            <div class="user-header">
+                                        <div class="comments-container card h-100">
+                                            <div class="user-header card-header bg-white d-flex align-content-center">
                                                 <div class="post-header-profilepic">
-                                                    <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
-                                                        alt="" class="img-fluid">
+                                                    <img alt="" class="img-fluid">
                                                 </div>
                                                 <div class="post-header-username mx-2">
-                                                    <small><strong>nickiminaj</strong></small>
+                                                    <small><strong></strong></small>
                                                 </div>
+                                            </div>
+                                            <div class="card-body">
+
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <p class="text-muted">Add comment...</p>
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +199,7 @@
                             <div class="profile me-3">
                                 <div class="image mx-2">
                                     {%if this_user.profile.profile_pic %}
-                                    <img src="{{ user.profile.profile_pic.url }}" alt="">
+                                    <img src="{{ this_user.profile.profile_pic.url }}" alt="">
                                     {%else%}
                                     <img src="{%static 'img/default.png'%}" alt="">
                                     {%endif%}
