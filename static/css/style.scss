@@ -338,19 +338,19 @@ li{
                 }
             }
         }
-        .logout a {
-            line-height: 1;
-            font-weight: bold;
-            color: #48adff;
+        .logout{
+            margin-left: 40%;
+            a {
+                line-height: 1;
+                font-weight: bold;
+                color: #48adff;
+            }
         }
         .suggestions{
             color: grey;
             .image{
-                height: 30px;
-                width: 30px;
                 box-shadow: none;
             }
         }
     }
-    
 }

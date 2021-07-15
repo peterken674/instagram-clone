@@ -167,7 +167,7 @@
             <div id="subContent" class="col-4 pt-4">
                 <div class="affix position-fixed ">
                     <div class="d-flex">
-                        <div class="profile me-5">
+                        <div class="profile">
                             <div class="image mx-2">
                                 {%if user.profile.profile_pic %}
                                 <img src="{{ user.profile.profile_pic.url }}" alt="">
@@ -180,7 +180,7 @@
                                 <a href="#" class="text-dark">{{user.first_name}} {{user.last_name}}</a>
                             </div>
                         </div>
-                        <div class="logout ms-5">
+                        <div class="logout">
                             <a href="{% url 'logout'%}">Logout</a>
                         </div>
                     </div>
@@ -188,24 +188,31 @@
 
                         <p>Suggestions For You</p>
 
-                        <div class="d-flex">
+                        {%for this_user in all_users %}
+                        <div class="d-flex my-2">
                             <div class="profile me-3">
                                 <div class="image mx-2">
-                                    {%if user.profile.profile_pic %}
+                                    {%if this_user.profile.profile_pic %}
                                     <img src="{{ user.profile.profile_pic.url }}" alt="">
                                     {%else%}
                                     <img src="{%static 'img/default.png'%}" alt="">
                                     {%endif%}
                                 </div>
                                 <div class="name mx-2">
-                                    <a href="#" class="username">{{user.username}}</a>
+                                    <a href="#" class="username">{{this_user.username}}</a>
                                     <a href="#" class="text-dark">Instagram recommended</a>
                                 </div>
                             </div>
-                            <div class="logout ms-0">
-                                <a href="{% url 'logout'%}">Follow</a>
+                            <div class="logout ms-4">
+                                {% if this_user in followed %}
+                                <a href="{% url 'follow' user_id=this_user.id %}" class="text-danger text-muted">Unfollow</a>
+                                {% else %}
+                                <a href="{% url 'follow' user_id=this_user.id %}">Follow</a>
+                                {%endif%}
+
                             </div>
                         </div>
+                        {%endfor%}
 
                     </div>
                 </div>

@@ -93,8 +93,8 @@ class Comment(models.Model):
         ordering=["-pk"]
 
 class Follow(models.Model):
-    follower=models.ForeignKey(Profile,related_name='followers',on_delete=models.CASCADE)
-    followed=models.ForeignKey(Profile,related_name='followed',on_delete=models.CASCADE)
+    follower=models.ForeignKey(User,related_name='followers',on_delete=models.CASCADE)
+    followed=models.ForeignKey(User,related_name='followed',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.follower

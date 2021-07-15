@@ -395,6 +395,10 @@ li {
   color: #a1a1a1;
 }
 
+#subContent .affix .logout {
+  margin-left: 40%;
+}
+
 #subContent .affix .logout a {
   line-height: 1;
   font-weight: bold;
@@ -406,8 +410,6 @@ li {
 }
 
 #subContent .affix .suggestions .image {
-  height: 30px;
-  width: 30px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
