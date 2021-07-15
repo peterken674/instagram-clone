@@ -17,21 +17,21 @@
                 <div class="modal-body">
                     {% csrf_token %}
                     {% bootstrap_form upload_form %}
-                    </div>
-                    <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Post</button>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 
 <!--  -->
 
 <div class="container-fluid">
     <div class="container-lg" id="contentWrapper">
-        <div class="row">
-            <div id="main" class="col-lg-8 col-md-12 my-4">
+        <div class="row mt-5">
+            <div id="main" class="col-lg-8 col-12 my-4">
 
                 {% include 'statuses.html'%}
 
@@ -41,8 +41,14 @@
                     <div class="post-header px-4 py-3">
                         <div class="post-header-left">
                             <div class="post-header-profilepic">
-                                <img src="https://townsquare.media/site/812/files/2020/10/nicki-minaj1.jpg?w=1200"
-                                    alt="" class="img-fluid">
+
+                                {%if post.user.profile_pic %}
+                                <img src="{{ post.user.profile_pic.url }}" alt="" class="img-fluid">
+                                {% else %}
+                                <img src="{% static 'img/default.png'%}" alt="" class="img-fluid">
+                                {% endif %}
+
+
                             </div>
                             <div class="post-header-username mx-2">
                                 <small><strong>{{ post.user.user.username }}</strong></small>
@@ -60,14 +66,15 @@
                     <div class="post-footer">
                         <div class="post-footer-icons d-flex justify-content-between p-2">
                             <div class="post-footer-icons-left">
-                                
+
                                 {% if post in liked_posts%}
-                                <a href="{% url 'like' post_id=post.id%}"><i class='bx bxs-heart px-2 ms-0 text-danger'></i></a>
+                                <a href="{% url 'like' post_id=post.id%}"><i
+                                        class='bx bxs-heart px-2 ms-0 text-danger'></i></a>
                                 {% else %}
                                 <a href="{% url 'like' post_id=post.id%}"><i class='bx bx-heart px-2 ms-0'></i></a>
                                 {% endif %}
 
-                                
+
 
 
                                 <a href="#"><i class='bx bx-message-rounded px-2'></i></a>
@@ -79,7 +86,8 @@
                         </div>
                         <div class="post-footer-details px-2 my-0">
                             <p><strong> {{ post.likes.count }} like{{ post.likes.count | pluralize}}</strong></p>
-                            <p><strong>{{ post.user.user.username }}</strong> {{ post.description|truncatewords:5 }}<span
+                            <p><strong>{{ post.user.user.username }}</strong>
+                                {{ post.description|truncatewords:5 }}<span
                                     class="text-muted small">{%if post.description|wordcount > 5%}more{%endif%}</span>
                             </p>
                             {% if post.comments.all %}
@@ -92,21 +100,24 @@
                             {% endif %}
                             <!-- Comments Loop -->
                             {% for comment in post.comments.all|slice:"3" %}
-                            <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment|truncatewords:4 }} </p>
+                            <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment|truncatewords:4 }}
+                            </p>
                             {% endfor %}
                             <!----------  -->
                             <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
                         </div>
                     </div>
 
-                    <div class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2 p-2 border-top mb-2">
+                    <div
+                        class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2 p-2 border-top mb-2">
                         <div class="emoji"><i class='bx bx-smile'></i></div>
 
 
                         <div class="comment">
                             <form action="{% url 'comment' post_id=post.id %}" method="POST">
                                 {% csrf_token %}
-                                <input class="py-2 small" type="text" name="comment" id="comment" placeholder="Add a comment..." required>
+                                <input class="py-2 small" type="text" name="comment" id="comment"
+                                    placeholder="Add a comment..." required>
                                 <button type="submit">Post</button>
                             </form>
                         </div>
@@ -126,12 +137,12 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-8">
                                         <div class="img-container">
                                             <img alt="" class="img-fluid">
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="comments-container">
                                             <div class="user-header">
                                                 <div class="post-header-profilepic">
@@ -153,24 +164,51 @@
                 <!--  -->
             </div>
 
-            <div id="subContent" class="col-lg-4 my-4 d-none d-lg-block pt-3 position-fixed offset-8">
-                <div class="affix">
-                    <div class="logged-user">
-                        <div class="profile-header-left">
-                            <div class="profile-header-profilepic">
-                                <img src="{% static 'img/default.png' %}" alt="" class="img-fluid">
+            <div id="subContent" class="col-4 pt-4">
+                <div class="affix position-fixed ">
+                    <div class="d-flex">
+                        <div class="profile me-5">
+                            <div class="image mx-2">
+                                {%if user.profile.profile_pic %}
+                                <img src="{{ user.profile.profile_pic.url }}" alt="">
+                                {%else%}
+                                <img src="{%static 'img/default.png'%}" alt="">
+                                {%endif%}
                             </div>
-                            <div class="post-header-username mx-2 d-flex flex-column">
-                                <small><strong>{{user.username}}</strong></small>
-                                <small class="text-muted">{{user.first_name}} {{user.last_name}}</small>
+                            <div class="name mx-2">
+                                <a href="#" class="username">{{user.username}}</a>
+                                <a href="#" class="text-dark">{{user.first_name}} {{user.last_name}}</a>
                             </div>
                         </div>
-                        <div class="post-header-right">
-                            <small class="text-primary"><strong><a href="{% url 'logout'%}">Logout</a></strong></small>
+                        <div class="logout ms-5">
+                            <a href="{% url 'logout'%}">Logout</a>
                         </div>
                     </div>
-                </div>
+                    <div class="suggestions mt-5 px-2">
 
+                        <p>Suggestions For You</p>
+
+                        <div class="d-flex">
+                            <div class="profile me-3">
+                                <div class="image mx-2">
+                                    {%if user.profile.profile_pic %}
+                                    <img src="{{ user.profile.profile_pic.url }}" alt="">
+                                    {%else%}
+                                    <img src="{%static 'img/default.png'%}" alt="">
+                                    {%endif%}
+                                </div>
+                                <div class="name mx-2">
+                                    <a href="#" class="username">{{user.username}}</a>
+                                    <a href="#" class="text-dark">Instagram recommended</a>
+                                </div>
+                            </div>
+                            <div class="logout ms-0">
+                                <a href="{% url 'logout'%}">Follow</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
